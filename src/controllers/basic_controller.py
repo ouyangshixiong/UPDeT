@@ -113,7 +113,8 @@ class BasicMAC:
         arranged_obs = th.cat((raw_obs[:, :, -1:], raw_obs[:, :, :-1]), 2)
         reshaped_obs = arranged_obs.view(-1, 1 + (self.args.enemy_num - 1) + self.args.ally_num, self.args.token_dim)
         inputs.append(reshaped_obs)
-        inputs = th.cat(inputs, dim=1).cuda()
+        #inputs = th.cat(inputs, dim=1).cuda()
+        inputs = th.cat(inputs, dim=1)
         return inputs
 
     def _get_input_shape(self, scheme):
